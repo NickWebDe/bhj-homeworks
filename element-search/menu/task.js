@@ -1,14 +1,18 @@
-let menuItem = Array.from(document.getElementsByClassName('menu__link'));
+let menuItem = Array.from(document.getElementsByClassName('menu_button'));
 let item = Array.from(document.querySelectorAll('ul.menu.menu_sub'))
+let company = document.getElementById('company');
+let service = document.getElementById('service');
 
-for (let i = 0; i < menuItem.length; i++) {
-	menuItem[i].onclick = function () {
-		if(menuItem[i].textContent === 'О компании') {
-		item[0].className = 'menu menu_sub menu_active';
+
+menuItem.forEach(function (element, idx) {
+	element.onclick = function () {
+		if(company.className === 'menu menu_sub menu_active') {
+			company.className = 'menu menu_sub';			
+		} else if (service.className === 'menu menu_sub menu_active') {
+			service.className = 'menu menu_sub'
+		}
+		item[idx].className = 'menu menu_sub menu_active'
 		return false;
-	} else if (menuItem[i].textContent === 'Услуги') {
-		item[1].className = 'menu menu_sub menu_active';
-		return false;
-	}
-}
-}
+	};
+})
+

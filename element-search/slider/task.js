@@ -1,26 +1,23 @@
-const slide = Array.from(document.getElementsByClassName('slider__item'));
+const sliderItems = Array.from(document.getElementsByClassName('slider__item'));
 const sliderNext = document.querySelector('.slider__arrow_next');
-const sliderPrev = document.querySelector('.slider__arrow_prev');
-let slideItem = 0;
+const sliderPrev = document.querySelector('.slider__arrow_prev'); 
+const arrFix = 1; //здесь создал переменную которая отнимает от sliderItems.length еденицу ибо тогда не получается сравнение с idx
+const startIdx = 0; // здесь аналогично как и выше не смог придумать более правильного решения
+
+let idx = sliderItems.findIndex(element => element.className === 'slider__item slider__item_active')
 
 sliderNext.onclick = function () {
-	slideItem ++;
-	slide.forEach(element => element.className = 'slider__item');
-	slide[slideItem].className = 'slider__item slider__item_active';
-	if(slideItem === 4) {
-		slideItem = 0;
-		slide[slideItem].className = 'slider__item slider__item_active';
-	}
+	sliderItems[idx].className = 'slider__item';
+	idx === sliderItems.length - arrFix ? idx -= sliderItems.length - arrFix : idx++;
+	sliderItems[idx].className = 'slider__item slider__item_active';
 }
 
 sliderPrev.onclick = function () {
-	slideItem --;
-	slide.forEach(element => element.className = 'slider__item');
-	slide[slideItem].className = 'slider__item slider__item_active';
-	if(slideItem === 0) {
-		slideItem = 4;
-		slide[slideItem].className = 'slider__item slider__item_active';
-	}
+	sliderItems[idx].className = 'slider__item';
+	idx === startIdx ? idx = sliderItems.length - arrFix : idx--;
+	sliderItems[idx].className = 'slider__item slider__item_active';
 }
+
+
 
 
