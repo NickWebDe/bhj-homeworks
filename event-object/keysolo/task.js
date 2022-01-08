@@ -17,7 +17,13 @@ class Game {
   }
 
   registerEvents() {
-    /*
+    let symbolCurrent = this.currentSymbol.textContent;
+    function check (e) {
+      e.key === symbolCurrent? this.success() : this.fail(); // не могу разобраться почему не работают функции
+    };
+    
+    document.addEventListener('keyup', check);
+      /*
       TODO:
       Написать обработчик события, который откликается
       на каждый введённый символ.
@@ -25,6 +31,7 @@ class Game {
       При неправильном вводе символа - this.fail();
      */
   }
+
 
   success() {
     this.currentSymbol.classList.add('symbol_correct');
