@@ -17,19 +17,10 @@ class Game {
   }
 
   registerEvents() {
-    let symbolCurrent = this.currentSymbol.textContent;
-    function check (e) {
-      e.key === symbolCurrent? this.success() : this.fail(); // не могу разобраться почему не работают функции
-    };
-    
-    document.addEventListener('keyup', check);
-      /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+
+    document.addEventListener('keyup', (e) => {
+      e.key.toUpperCase() === this.currentSymbol.textContent.toUpperCase() ? this.success() : this.fail();
+    });
   }
 
 
