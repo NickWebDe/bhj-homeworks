@@ -1,23 +1,21 @@
-const sliderItems = Array.from(document.getElementsByClassName('slider__item'));
-const sliderNext = document.querySelector('.slider__arrow_next');
+const slrArr = Array.from(document.getElementsByClassName('slider__item'));
 const sliderPrev = document.querySelector('.slider__arrow_prev'); 
-const arrFix = 1; //здесь создал переменную которая отнимает от sliderItems.length еденицу ибо тогда не получается сравнение с idx
-const startIdx = 0; // здесь аналогично как и выше не смог придумать более правильного решения
 
 
-sliderNext.onclick = function () {
-	sliderItems[idx].className = 'slider__item';
-	sliderItems.findIndex(element => element.className === 'slider__item slider__item_active') === sliderItems.length - arrFix ? idx -= sliderItems.length - arrFix : idx++;
-	sliderItems[idx].className = 'slider__item slider__item_active';
-}
-
-sliderPrev.onclick = function () {
-	sliderItems[idx].className = 'slider__item';
-	let idx = sliderItems.findIndex(element => element.className === 'slider__item slider__item_active') 
-	idx === startIdx ? idx = sliderItems.length - arrFix : idx--;
-	sliderItems[idx].className = 'slider__item slider__item_active';
-}
+document.querySelector('.slider__arrow_next').addEventListener('click', (e) => {
+    let slideActive = slrArr.findIndex( (e) => e.className === 'slider__item slider__item_active');
+	slrArr[slideActive].className = 'slider__item';
+	slideActive === slrArr.length -1 ? slideActive = slrArr.length - slrArr.length : slideActive + 1;
+	slrArr[slideActive + 1].className = 'slider__item slider__item_active'
+});
 
 
+
+document.querySelector('.slider__arrow_prev').addEventListener('click', (e) => {
+    let slideActive = slrArr.findIndex( (e) => e.className === 'slider__item slider__item_active');
+	slrArr[slideActive].className = 'slider__item';
+	slideActive ===  slrArr.length - slrArr.length ? slideActive = slrArr.length : slideActive - 1;
+	slrArr[slideActive - 1].className = 'slider__item slider__item_active'
+});
 
 
