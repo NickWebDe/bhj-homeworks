@@ -1,6 +1,5 @@
 const botMsgArr = ['Мы не работаем!', 'Мы заняты, давайте в другой раз!', 'Напишите позже!', 'Досвидание!', 'Аривидерчи!', 'Не пишите нам больше!'];
 const input = document.getElementById('chat-widget__input');
-let clientMessageArr = document.getElementsByClassName("message message_client");
 document.querySelector('.chat-widget').addEventListener('click', (e) => e.currentTarget.className = 'chat-widget chat-widget_active');
 
 
