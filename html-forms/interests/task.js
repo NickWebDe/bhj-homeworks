@@ -1,8 +1,10 @@
-let num = document.querySelector('.interest__check');
-const arr = document.getElementsByClassName('interest');
+const element = document.getElementsByClassName('interest__check');
 
-console.log(arr.selectIndex)
-num.onclick = function (e) {	
-	num.indeterminate = true;
- console.log(document.querySelectorAll('.interest__check'));
-}
+element[0].addEventListener('click', () => {
+	element[1].checked === false? (element[1].checked = true, element[2].checked = true) : (element[1].checked = false, element[2].checked = false);
+})
+
+element[3].addEventListener('click', () => {
+	element[4].checked === false? (element[4].checked = true, element[5].checked = true) : (element[4].checked = false, element[5].checked = false);
+})
+
