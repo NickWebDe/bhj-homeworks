@@ -1,27 +1,36 @@
-const inputPanel = document.getElementById('task__input');
-const taskPanel = document.getElementById('tasks__list');
-const taskArray = document.getElementsByClassName('task__title');
-const taskRemove = document.getElementsByClassName('task__remove');
-
-let html = `<div class="task">
+const taskInput = document.getElementById('task__input');
+const taskList = document.getElementById('tasks__list');
+const taskTitleArr = document.getElementsByClassName('task__title');
+const removeTask = document.getElementsByClassName('task__remove');
+const htmlTask = `<div class="task">
   <div class="task__title">
   </div>
   <a href="#" class="task__remove">&times;</a>
 </div>`
 
-inputPanel.addEventListener('change', (e) => {
-		taskPanel.insertAdjacentHTML('beforeEnd', html);
-		taskArray[taskArray.length -1].append(inputPanel.value);
-		
-		taskRemove[taskArray.length -1].addEventListener('click', (e) => {
-		console.log(idx)
-		// taskPanel.getElementsByClassName('task')[taskArray.length ].remove();
-	
-		});
-	
+taskInput.addEventListener('change', (e) => {
+	e.preventDefault();
+	taskList.insertAdjacentHTML('beforeEnd', htmlTask);
+	taskTitleArr[taskTitleArr.length -1].append(taskInput.value);
+	removeTask[removeTask.length -1].addEventListener('click', (e) => {
+	e.currentTarget.closest('div').remove()
+   })
 
-		inputPanel.value = '';
+	// taskInput.reset() - почему то такой подход не работает для очистки поля ввода :(
 
-		
+	taskInput.value = '';
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
