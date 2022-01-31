@@ -1,10 +1,23 @@
-const element = document.getElementsByClassName('interest__check');
+const interestFood = document.querySelector('.interest__food');
+const interestAnimals = document.querySelector('.interest__animals');
 
-element[0].addEventListener('click', () => {
-	element[1].checked === false? (element[1].checked = true, element[2].checked = true) : (element[1].checked = false, element[2].checked = false);
+
+interestFood.addEventListener('click', (e) => {
+    Array.from(interestFood.lastElementChild.getElementsByClassName('interest__check')).forEach( (element) => {
+        if(element.checked) {
+            element.checked = false;
+        } else if (!element.checked) {
+            element.checked = true;
+        }
+    })
 })
 
-element[3].addEventListener('click', () => {
-	element[4].checked === false? (element[4].checked = true, element[5].checked = true) : (element[4].checked = false, element[5].checked = false);
+interestAnimals.addEventListener('click', (e) => {
+    Array.from(interestAnimals.lastElementChild.getElementsByClassName('interest__check')).forEach( (element) => {
+        if(element.checked) {
+            element.checked = false;
+        } else if (!element.checked) {
+            element.checked = true;
+        }
+    })
 })
-
