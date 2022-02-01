@@ -32,6 +32,7 @@ productAdd.forEach( (element) => {
             <div class="cart__product-count">` + count + `</div>
             </div>`;
 
+
 		for(let i= 0; i <= cartProduct.length -1; i++) {
 			if(Number(cartProduct[i].getAttribute('data-id')) === dataId) {
 				cartProduct[i].querySelector('.cart__product-count').innerText =
