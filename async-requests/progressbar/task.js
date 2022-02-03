@@ -1,19 +1,14 @@
 const btnSend = document.getElementById('send');
+const form = document.getElementById('form');
 
-btnSend.addEventListener('click', (e) => {
+form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const inputData = new FormData(document.getElementById('form'));
+    const dataFile = new FormData();
+    dataFile.append('file',document.getElementById('file').files)
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/upload.php');
-    xhr.send(inputData);
-    xhr.onreadystatechange = function () {
-        console.log(xhr.readyState);
-        if(xhr.readyState === xhr.DONE) {
-            alert('Загрузка успешно завершена')
-        }
-    }
-    xhr.upload.onloadstart  = function () { // Почему то не работает событие, не могу разобраться
-        console.log('Start')
-    }
-
+    xhr.upload.onprogress = (e) => { //Вот здесь обработчик почему то срабатывает только один раз а xhr.onprogress - работает как нужно 
+        console.log(e.loaded)
+    };
+    xhr.send(dataFile);
 })
